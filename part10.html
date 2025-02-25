@@ -109,10 +109,8 @@ function create ()
     });
 
     stars.children.iterate(function (child) {
-
         //  Give each star a slightly different bounce
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-
     });
 
     bombs = this.physics.add.group();
@@ -141,19 +139,18 @@ function update ()
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
-
         player.anims.play('left', true);
+        player.flipX = true; // Flip the sprite to face left
     }
     else if (cursors.right.isDown)
     {
         player.setVelocityX(160);
-
         player.anims.play('right', true);
+        player.flipX = false; // Ensure the sprite faces right
     }
     else
     {
         player.setVelocityX(0);
-
         player.anims.play('turn');
     }
 
